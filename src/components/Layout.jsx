@@ -2,7 +2,7 @@ import Header from "./Header";
 
 export default function Layout({ children }) {
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <Header />
       <main>{children}</main>
     </div>

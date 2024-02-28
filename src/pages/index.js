@@ -6,7 +6,6 @@ import BarCard from "@/components/charts/BarCard";
 export default function Home() {
   return (
     <div className="w-[1440px] h-[1148px] relative bg-gray-100">
-      <div className="w-[1440px] px-[120px] py-4 left-0 top-0 absolute bg-white justify-between items-center inline-flex"></div>
       <div className="w-96 h-[216px] left-[120px] top-[104px] absolute bg-blue-600 rounded-[18px]">
         <div className="left-[32px] top-[128px] absolute flex-col justify-start items-start inline-flex">
           <div className="opacity-50 text-center text-white text-base font-normal font-['Roboto'] leading-normal">

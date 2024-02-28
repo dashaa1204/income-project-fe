@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -144,6 +144,7 @@ export default function DoughnutCard() {
       },
     ],
   };
+
   return (
     <div className="w-[588px] h-[284px] left-[732px] top-[344px] absolute bg-white rounded-xl flex-col justify-start items-start inline-flex">
       <div className="self-stretch px-6 py-4 border-b border-slate-200 justify-start items-center gap-2 inline-flex">
@@ -152,11 +153,12 @@ export default function DoughnutCard() {
         </div>
       </div>
       <div className="self-stretch h-[226px] px-6 py-8 flex-col justify-end items-start gap-8 flex">
-        <div className="justify-start items-start gap-[17px] inline-flex w-[200px]">
+        <div className="justify-start items-start gap-[17px] inline-flex w-[170px]">
           <Doughnut
             data={data}
             options={{ plugins: { legend: { display: false } } }}
           />
+          <div className="flex flex-col items-start gap-4"></div>
         </div>
       </div>
     </div>

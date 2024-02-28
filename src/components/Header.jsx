@@ -2,7 +2,7 @@ import Vector from "./logos/Vector";
 
 export default function Header() {
   return (
-    <div className="flex justify-between items-center p-4 w-[1440px]">
+    <div className="flex justify-between items-center px-[100px] py-4 w-full">
       <div className="flex items-center gap-6">
         <Vector />
         <p className="text-center text-slate-900 font-semibold">Dashboard</p>
