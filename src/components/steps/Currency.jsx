@@ -1,6 +1,10 @@
 import Geld from "../logos/Geld";
+import Balance from "./Balance";
+import { useStepData } from "@/context/stepsContext";
 
 export default function Currency() {
+  const { steps, setSteps } = useStepData();
+  console.log({ steps });
   return (
     <div className="flex pt-10 fb-[399px] flex-col items-center gap-[141px]">
       <Geld />
@@ -46,7 +50,12 @@ export default function Currency() {
             transaction in other currencies will be calculated based on this one{" "}
           </p>
         </div>
-        <button className="btn bg-blue-600 text-white">Confirm</button>
+        <button
+          className="btn bg-blue-600 text-white"
+          onClick={() => setSteps(<Balance />)}
+        >
+          Confirm
+        </button>
       </div>
     </div>
   );
