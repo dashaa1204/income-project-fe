@@ -4,7 +4,7 @@ import Balance from "@/components/steps/Balance";
 import Currency from "@/components/steps/Currency";
 import { useState } from "react";
 import { useStepData } from "@/context/stepsContext";
-export default function SignUpDetail() {
+export default function signUpDetail() {
   const { steps } = useStepData();
   return <div>{steps}</div>;
 }

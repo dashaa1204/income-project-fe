@@ -3,7 +3,8 @@ import { StepsProvider } from "@/context/stepsContext";
 import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }) {
-  return (
+  const getLayout = Component.getLayout ?? ((page) => page);
+  return getLayout(
     <StepsProvider>
       <Component {...pageProps} />;
     </StepsProvider>

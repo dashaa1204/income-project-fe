@@ -1,7 +1,7 @@
 import Vector from "@/components/logos/Vector";
 import Router, { useRouter } from "next/router";
 
-export default function SignUp() {
+export default function signUp() {
   const router = useRouter();
   return (
     <div className="w-full bg-color-white flex">
@@ -70,7 +70,7 @@ export default function SignUp() {
           <p>Already have account?</p>
           <button
             className="text-blue-600"
-            onClick={() => router.push("/Login")}
+            onClick={() => router.push("/login")}
           >
             Sign in
           </button>

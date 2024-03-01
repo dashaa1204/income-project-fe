@@ -1,7 +1,7 @@
 import Vector from "@/components/logos/Vector";
 import { useRouter } from "next/router";
 
-export default function Login() {
+export default function login() {
   async function handleSubmit(e) {
     let newId = nanoid();
     const data = {
@@ -77,7 +77,7 @@ export default function Login() {
           <p>Don’t have account?</p>
           <button
             className="text-blue-600"
-            onClick={() => router.push("/SignUp")}
+            onClick={() => router.push("/signUp")}
           >
             Sign up
           </button>

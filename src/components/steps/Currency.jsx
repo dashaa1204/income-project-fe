@@ -4,7 +4,6 @@ import { useStepData } from "@/context/stepsContext";
 
 export default function Currency() {
   const { steps, setSteps } = useStepData();
-  console.log({ steps });
   return (
     <div className="flex pt-10 fb-[399px] flex-col items-center gap-[141px]">
       <Geld />
@@ -51,7 +50,7 @@ export default function Currency() {
           </p>
         </div>
         <button
-          className="btn bg-blue-600 text-white"
+          className="btn bg-blue-600 text-white w-[384px] rounded-[20px]"
           onClick={() => setSteps(<Balance />)}
         >
           Confirm

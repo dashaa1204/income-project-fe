@@ -58,7 +58,7 @@ export default function BarCard() {
     datasets: [
       {
         label: "income",
-        data: [65, 59, 80, 81, 56, 55, 40],
+        data: [3000000, 3000000, 3000000, 3000000, 3000000, 3000000, 3000000],
         backgroundColor: ["lightgreen"],
         borderColor: ["rgb(255, 99, 132)", "rgb(255, 159, 64)"],
         borderWidth: 0,
@@ -67,7 +67,7 @@ export default function BarCard() {
       },
       {
         label: "expense",
-        data: [65, 59, 80, 81, 56, 55, 40],
+        data: [3000000, 3000000, 3000000, 3000000, 3000000, 3000000, 3000000],
         backgroundColor: ["orange"],
         borderColor: ["rgb(255, 99, 132)", "rgb(255, 159, 64)"],
         borderWidth: 0,
