@@ -3,6 +3,33 @@ import Router, { useRouter } from "next/router";
 
 export default function signUp() {
   const router = useRouter();
+  const beUrl = "http://localhost:3000/add-user";
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const data = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      password: e.target.password.value,
+    };
+    const option = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    };
+
+    if (
+      data.name &&
+      data.email &&
+      data.password &&
+      data.password === data.repassword
+    ) {
+      const fetchedData = await fetch(beUrl, option);
+      const fetchedJson = await fetchedData.text();
+      console.log("user added successfully");
+    } else {
+      return alert("dasds");
+    }
+  }
   return (
     <div className="w-full bg-color-white flex">
       <div className="h-screen w-1/2 inline-flex flex-col items-center gap-10 justify-center">
@@ -38,24 +65,27 @@ export default function signUp() {
           <p>Sign up below to create your Wallet account</p>
         </div>
         <div className="flex flex-col items-start gap-4">
-          <form className="flex flex-col gap-2">
+          <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
             <input
+              name="name"
               type="text"
               className="w-[384px] rounded-lg border h-12 pl-4"
               placeholder="Name"
             />
             <input
-              type="text"
+              name="email"
+              type="email"
               className="w-[384px] rounded-lg border h-12 pl-4"
               placeholder="Email"
             />
             <input
-              type="text"
+              name="password"
+              type="password"
               className="w-[384px] rounded-lg border h-12 pl-4"
               placeholder="Password"
             />
             <input
-              type="text"
+              type="password"
               className="w-[384px] rounded-lg border h-12 pl-4"
               placeholder="Re-password"
             />
