@@ -10,6 +10,7 @@ export default function signUp() {
       name: e.target.name.value,
       email: e.target.email.value,
       password: e.target.password.value,
+      repassword: e.target.repassword.value,
     };
     const option = {
       method: "POST",
@@ -25,9 +26,10 @@ export default function signUp() {
     ) {
       const fetchedData = await fetch(beUrl, option);
       const fetchedJson = await fetchedData.text();
+      router.push("/signUpDetail");
       console.log("user added successfully");
     } else {
-      return alert("dasds");
+      alert("Inputs can not be empty");
     }
   }
   return (
@@ -85,6 +87,7 @@ export default function signUp() {
               placeholder="Password"
             />
             <input
+              name="repassword"
               type="password"
               className="w-[384px] rounded-lg border h-12 pl-4"
               placeholder="Re-password"
