@@ -1,9 +1,11 @@
 import Vector from "@/components/logos/Vector";
 import Router, { useRouter } from "next/router";
+import { nanoid } from "nanoid";
 
 export default function signUp() {
   const router = useRouter();
   const beUrl = "http://localhost:3000/add-user";
+  const id = nanoid(4);
   async function handleSubmit(e) {
     e.preventDefault();
     const data = {
@@ -11,6 +13,7 @@ export default function signUp() {
       email: e.target.email.value,
       password: e.target.password.value,
       repassword: e.target.repassword.value,
+      id: nanoid(),
     };
     const option = {
       method: "POST",
