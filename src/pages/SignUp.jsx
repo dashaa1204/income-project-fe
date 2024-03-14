@@ -1,6 +1,7 @@
 import Vector from "@/components/logos/Vector";
 import Router, { useRouter } from "next/router";
 import { nanoid } from "nanoid";
+import { useStepData } from "@/context/StepsContext";
 
 export default function signUp() {
   const router = useRouter();
@@ -8,6 +9,7 @@ export default function signUp() {
   const id = nanoid(4);
   async function handleSubmit(e) {
     e.preventDefault();
+
     const data = {
       name: e.target.name.value,
       email: e.target.email.value,

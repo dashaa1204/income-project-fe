@@ -3,7 +3,18 @@ import Balance from "./Balance";
 import { useStepData } from "@/context/stepsContext";
 
 export default function Currency() {
-  const { steps, setSteps } = useStepData();
+  const { steps, setSteps, cur, setCur, ida } = useStepData();
+  const beUrl = "http://localhost:3000/add-user";
+  console.log(ida);
+
+  async function handleSubmit(e) {
+    const data = {
+      currency: e.target.currency.value,
+    };
+    setSteps(<Balance />);
+    console.log("a");
+    const fetchedData = await fetch(beUrl);
+  }
   return (
     <div className="flex pt-10 fb-[399px] flex-col items-center gap-[141px]">
       <Geld />
@@ -32,27 +43,23 @@ export default function Currency() {
               </div>
               <p>Select base currency</p>
             </div>
-            <details className="dropdown">
-              <summary className="m-1 btn">MNT Mongolian Tukrik</summary>
-              <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 w-[300px]">
-                <li>
-                  <a>MNT Mongolian Tukrik</a>
-                </li>
-                <li>
-                  <a>USD American Dollar</a>
-                </li>
-              </ul>
-            </details>
+            <select
+              name="currency"
+              className="select w-full max-w-lg bg-gray-200"
+              onChange={(e) => {
+                setCur(e.target.value);
+              }}
+            >
+              <option>MNT Mongolian Tukrik</option>
+              <option>USD American Dollar</option>
+            </select>
           </div>
           <p className="text-xs">
             Your base currency should be the one you use most often. All
             transaction in other currencies will be calculated based on this one{" "}
           </p>
         </div>
-        <button
-          className="btn bg-blue-600 text-white w-[384px] rounded-[20px]"
-          onClick={() => setSteps(<Balance />)}
-        >
+        <button className="btn bg-blue-600 text-white w-[384px] rounded-[20px]">
           Confirm
         </button>
       </div>
