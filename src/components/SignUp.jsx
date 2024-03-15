@@ -1,21 +1,48 @@
 import Vector from "@/components/logos/Vector";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
+import { nanoid } from "nanoid";
+import { useStepData } from "@/context/StepsContext";
+// import { useStepData } from "../context/StepsContext";
 
-export default function login() {
+export default function SignUp() {
+  const router = useRouter();
+  const beUrl = "http://localhost:3000/add-user";
+  const { setId, id } = useStepData();
+
   async function handleSubmit(e) {
-    let newId = nanoid();
-    const data = {};
-    console.log(data);
-    const options = {
+    e.preventDefault();
+    const data = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      password: e.target.password.value,
+      repassword: e.target.repassword.value,
+      id: nanoid(),
+    };
+    const option = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     };
-    const fetchedData = await fetch(beUrl, options);
-    const fetchedJson = await fetchedData.text();
-    console.log("success");
+    const id = "newwww";
+    if (
+      data.name &&
+      data.email &&
+      data.password &&
+      data.password === data.repassword
+    ) {
+      const fetchedData = await fetch(beUrl, option);
+      const fetchedJson = await fetchedData.json();
+      console.log("sssssss", data.id);
+      if (typeof window !== "undefined" && window.localStorage) {
+        localStorage.setItem("user_id", data.id);
+      }
+      router.push("/signUpDetail");
+
+      console.log("user added successfully");
+    } else {
+      alert("Inputs can not be empty");
+    }
   }
-  const router = useRouter();
   return (
     <div className="w-full bg-color-white flex">
       <div className="h-screen w-1/2 inline-flex flex-col items-center gap-10 justify-center">
@@ -47,35 +74,49 @@ export default function login() {
           </svg>
         </div>
         <div className="flex flex-col items-center gap-2">
-          <p>Welcome Back</p>
-          <p>Welcome back, Please enter your details</p>
+          <p>Create Geld account</p>
+          <p>Sign up below to create your Wallet account</p>
         </div>
         <div className="flex flex-col items-start gap-4">
-          <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+          <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
             <input
+              name="name"
               type="text"
+              className="w-[384px] rounded-lg border h-12 pl-4"
+              placeholder="Name"
+            />
+            <input
+              name="email"
+              type="email"
               className="w-[384px] rounded-lg border h-12 pl-4"
               placeholder="Email"
             />
             <input
-              type="text"
+              name="password"
+              type="password"
               className="w-[384px] rounded-lg border h-12 pl-4"
               placeholder="Password"
             />
             <input
+              name="repassword"
+              type="password"
+              className="w-[384px] rounded-lg border h-12 pl-4"
+              placeholder="Re-password"
+            />
+            <input
               type="submit"
-              value={"Log in"}
+              value={"Sign up"}
               className="flex w-[384px] h-12 justify-center border rounded-lg bg-blue-600 text-white"
             />
           </form>
         </div>
         <div className="flex items-baseline gap-2">
-          <p>Don’t have account?</p>
+          <p>Already have account?</p>
           <button
             className="text-blue-600"
-            onClick={() => router.push("/signUp")}
+            onClick={() => router.push("/login")}
           >
-            Sign up
+            Sign in
           </button>
         </div>
       </div>

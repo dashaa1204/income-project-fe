@@ -1,6 +1,6 @@
 import Vector from "@/components/logos/Vector";
 
-export default function loading() {
+export default function Loading() {
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="flex flex-col items-center gap-12">

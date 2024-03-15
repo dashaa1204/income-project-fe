@@ -1,19 +1,25 @@
+import { options } from "../charts/DoughnutCard";
 import Geld from "../logos/Geld";
 import Balance from "./Balance";
 import { useStepData } from "@/context/stepsContext";
 
 export default function Currency() {
-  const { steps, setSteps, cur, setCur, ida } = useStepData();
-  const beUrl = "http://localhost:3000/add-user";
-  console.log(ida);
-
+  const { steps, setSteps, cur, setCur, id } = useStepData();
+  const beUrl = "http://localhost:3000/add-cur";
+  const myId = localStorage.getItem("myId");
   async function handleSubmit(e) {
     const data = {
-      currency: e.target.currency.value,
+      currency: cur,
+      id: myId,
     };
-    setSteps(<Balance />);
-    console.log("a");
-    const fetchedData = await fetch(beUrl);
+    const option = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    };
+    const fetchedData = await fetch(beUrl, option);
+    const fetchedJson = await fetchedData.text();
+    // setSteps(<Balance />);
   }
   return (
     <div className="flex pt-10 fb-[399px] flex-col items-center gap-[141px]">
@@ -48,6 +54,7 @@ export default function Currency() {
               className="select w-full max-w-lg bg-gray-200"
               onChange={(e) => {
                 setCur(e.target.value);
+                console.log(cur);
               }}
             >
               <option>MNT Mongolian Tukrik</option>
@@ -59,7 +66,10 @@ export default function Currency() {
             transaction in other currencies will be calculated based on this one{" "}
           </p>
         </div>
-        <button className="btn bg-blue-600 text-white w-[384px] rounded-[20px]">
+        <button
+          onClick={handleSubmit}
+          className="btn bg-blue-600 text-white w-[384px] rounded-[20px]"
+        >
           Confirm
         </button>
       </div>
