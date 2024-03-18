@@ -34,9 +34,9 @@ export default function Balance() {
             </div>
             <form className="flex flex-col gap-2">
               <input
-                type="text"
+                type="number"
                 className="w-[384px] rounded-lg border h-12 pl-4"
-                placeholder="Email"
+                placeholder="Balance"
               />
             </form>
             <p className="text-xs">How much cash do you have in your wallet?</p>

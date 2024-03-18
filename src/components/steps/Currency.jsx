@@ -6,7 +6,8 @@ import { useStepData } from "@/context/stepsContext";
 export default function Currency() {
   const { steps, setSteps, cur, setCur, id } = useStepData();
   const beUrl = "http://localhost:3000/add-cur";
-  const myId = localStorage.getItem("myId");
+  const myId = localStorage.getItem("user_id");
+  console.log(myId);
   async function handleSubmit(e) {
     const data = {
       currency: cur,
@@ -19,7 +20,8 @@ export default function Currency() {
     };
     const fetchedData = await fetch(beUrl, option);
     const fetchedJson = await fetchedData.text();
-    // setSteps(<Balance />);
+    console.log(fetchedData);
+    setSteps(<Balance />);
   }
   return (
     <div className="flex pt-10 fb-[399px] flex-col items-center gap-[141px]">
